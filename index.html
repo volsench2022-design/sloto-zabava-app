@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102d25">
+  <title>Soto | Telegram Game Room</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root{--bg:#f3f6f2;--ink:#14231d;--muted:#74837b;--green:#102d25;--green2:#1d4a3a;--lime:#c9f36c;--line:#e2e9e3;--card:#fff;--coral:#f07c65;--gold:#e8bd58;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}.app{max-width:900px;margin:auto;padding-bottom:76px}.top{display:flex;align-items:center;justify-content:space-between;padding:18px 18px 15px;background:var(--green);color:#fff}.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px}.mark{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:var(--lime);color:var(--green);font-size:19px;transform:rotate(-7deg)}.coinbar{display:flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid #547266;border-radius:8px;color:#e5efe8;font-size:11px}.coin{display:grid;place-items:center;width:18px;height:18px;border:2px solid #d4a33b;border-radius:50%;background:#f7d47b;color:#805c16;font-size:9px;font-weight:800}.hero{position:relative;overflow:hidden;margin:0;padding:25px 18px 30px;background:var(--green);color:#fff}.hero:after{position:absolute;right:-44px;bottom:-98px;width:260px;height:260px;border:1px solid #608273;border-radius:50%;box-shadow:0 0 0 22px #1d4437,0 0 0 23px #608273,0 0 0 48px #1d4437,0 0 0 49px #608273;content:"";opacity:.55}.eyebrow{margin:0 0 8px;color:var(--lime);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.hero h1{position:relative;z-index:1;max-width:390px;margin:0 0 8px;font-size:30px;line-height:1.08}.hero p{position:relative;z-index:1;max-width:340px;margin:0;color:#b8cbc0;font-size:12px;line-height:1.55}.actions{position:relative;z-index:2;display:flex;gap:8px;margin-top:20px}.primary,.secondary{min-height:39px;padding:0 13px;border:0;border-radius:7px;font-size:11px;font-weight:800}.primary{background:var(--lime);color:var(--green)}.secondary{border:1px solid #56766a;background:transparent;color:#fff}.content{padding:0 14px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 11px}.section-head h2{margin:0;font-size:16px}.section-head button,.text-button{border:0;background:transparent;color:#557866;font-size:11px;font-weight:700}.games{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.game{padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--card);box-shadow:0 5px 13px #183b2d08}.art{display:grid;place-items:center;height:70px;margin:-9px -9px 9px;border-radius:9px 9px 0 0;background:#e6f0e3;font-size:34px}.game:nth-child(2) .art{background:#fff0e8}.game:nth-child(3) .art{background:#f8edcd}.game:nth-child(4) .art{background:#e8eafa}.game h3{margin:0 0 3px;font-size:12px}.game p{min-height:25px;margin:0 0 8px;color:var(--muted);font-size:9px;line-height:1.35}.play{width:100%;padding:7px 5px;border:0;border-radius:5px;background:#eff6eb;color:var(--green);font-size:10px;font-weight:800}.columns{display:grid;grid-template-columns:1fr 1fr;gap:11px}.panel{padding:14px;border:1px solid var(--line);border-radius:9px;background:#fff}.panel h3{margin:0 0 13px;font-size:12px}.row{display:flex;align-items:center;gap:9px}.row+.row{margin-top:12px}.avatar{display:grid;place-items:center;width:35px;height:35px;flex:0 0 auto;border-radius:50%;background:#dcebd8;color:var(--green);font-weight:800}.person{min-width:0;flex:1}.person strong{display:block;overflow:hidden;font-size:10px;text-overflow:ellipsis;white-space:nowrap}.person span{display:block;margin-top:3px;color:var(--muted);font-size:9px}.small{padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--green);font-size:9px;font-weight:800}.feed{display:grid;gap:13px;color:#617069;font-size:10px;line-height:1.4}.feed b{color:var(--ink)}.room{margin-top:11px;padding:15px;border-radius:9px;background:#fff0e7}.room small{color:#aa5947;font-size:9px;font-weight:800;text-transform:uppercase}.room h3{margin:8px 0 5px;font-size:16px}.room p{margin:0 0 13px;color:#8b675c;font-size:10px}.room button{padding:8px 10px;border:0;border-radius:5px;background:#fff;color:#7e4437;font-size:10px;font-weight:800}.bottom{position:fixed;z-index:5;right:0;bottom:0;left:0;display:flex;justify-content:space-around;padding:9px 5px max(9px,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#fffffff2;backdrop-filter:blur(12px)}.bottom button{display:grid;gap:2px;min-width:55px;justify-items:center;border:0;background:transparent;color:#7c8a82;font-size:9px}.bottom button span{font-size:17px}.bottom button.active{color:var(--green);font-weight:800}.toast{position:fixed;z-index:20;right:16px;bottom:75px;left:16px;padding:12px 14px;border-radius:8px;background:var(--green);color:#fff;text-align:center;font-size:11px;opacity:0;pointer-events:none;transform:translateY(7px);transition:.2s}.toast.show{opacity:1;transform:none}.modal{position:fixed;z-index:10;inset:0;display:none;place-items:end center;background:#09201799}.modal.open{display:grid}.sheet{width:min(500px,100%);padding:18px;border-radius:15px 15px 0 0;background:#fff}.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.sheet h2{margin:0;font-size:17px}.close{width:28px;height:28px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:18px}.sheet p{margin:0 0 15px;color:var(--muted);font-size:11px;line-height:1.5}.stage{display:flex;justify-content:center;gap:8px;margin:14px 0;padding:24px;border-radius:9px;background:#edf5ea}.reel{display:grid;place-items:center;width:55px;height:63px;border-radius:7px;background:#fff;box-shadow:0 4px 10px #183b2d12;font-size:30px}.flip{display:grid;place-items:center;width:76px;height:76px;border:5px dashed #fff0b6;border-radius:50%;background:#e7b841;color:#765313;font-weight:800;font-size:21px}.flip.spin{animation:spin .6s ease-in-out}@keyframes spin{50%{transform:rotateY(540deg) scale(.8)}}.sheet-actions{display:flex;justify-content:center;gap:8px}.profile{display:flex;align-items:center;gap:11px;margin-bottom:15px}.profile .avatar{width:52px;height:52px;font-size:18px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}.stat{padding:10px 4px;border-radius:7px;background:#f1f6ef;text-align:center}.stat b{display:block;font-size:14px}.stat span{color:var(--muted);font-size:9px}.disclaimer{margin:18px 0 0;color:var(--muted);text-align:center;font-size:9px}
+@media(max-width:600px){.games{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.hero h1{font-size:27px}.hero{padding-top:22px}}@media(min-width:601px){.app{padding-bottom:20px}.bottom{position:static;max-width:900px;margin:25px auto 0;border:1px solid var(--line);border-radius:9px}.hero{padding-left:32px}.content{padding:0 28px}}
+</style>
+<style>
+  .app{max-width:1080px;padding-bottom:28px}
+  .top{padding:14px 24px}
+  .hero{padding:20px 28px 23px}
+  .hero:after{right:-132px;bottom:-190px;width:340px;height:340px;opacity:.2}
+  .hero h1{font-size:32px}
+  .content{padding:0 24px}
+  .section-head{margin-top:25px}
+  .games{gap:12px}
+  .game{min-width:0;transition:transform .16s ease,box-shadow .16s ease}
+  .game:hover{transform:translateY(-3px);box-shadow:0 10px 22px #183d2d14}
+  .game .art{height:78px;font-size:34px}
+  .game h3{margin:12px 12px 4px}
+  .game p{min-height:28px;margin:0 12px 11px}
+  .game .play{margin:0 10px 10px;width:calc(100% - 20px)}
+  .columns{gap:14px;margin-top:12px}
+  .panel{padding:18px}
+  .room-join{display:grid;gap:8px;margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+  .room-join label,.name-form label{font-size:12px;font-weight:800;color:var(--ink)}
+  .room-join-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .room-join-controls .secondary{border:0;background:var(--green2);color:#fff;font-weight:800}
+  .room-join input,.name-form input{width:100%;min-width:0;min-height:42px;padding:0 12px;border:1px solid #cbd7ce;border-radius:7px;background:#fff;color:var(--ink);font:inherit;font-size:13px}
+  .room-join input:focus,.name-form input:focus{outline:3px solid #c9f36c88;border-color:var(--green2)}
+  .room-join button{min-height:42px;padding:0 14px}
+  .name-form{display:grid;gap:12px;padding-top:8px}
+  .name-form button{min-height:44px}
+  .blackjack-game{display:grid;gap:12px;padding:14px;border-radius:9px;background:#102d25;color:#fff}
+  .blackjack-preview-table{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;padding:12px;border-radius:9px;background:#e6f0e5}
+  .blackjack-preview-table .blackjack-hand{min-width:0}
+  .blackjack-preview-table .blackjack-hand>strong{display:block;margin-bottom:8px;font-size:11px}
+  .blackjack-preview-table .blackjack-cards{min-height:82px;overflow:visible}
+  .blackjack-preview-table .blackjack-versus{height:auto;overflow:visible;transform:none}
+  .blackjack-hand{min-height:112px;padding:12px;border:1px solid #ffffff2b;border-radius:8px;background:#1d4a3a}
+  .blackjack-hand-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-size:12px}
+  .blackjack-hand-heading span{color:#c9f36c;font-variant-numeric:tabular-nums}
+  .blackjack-cards{display:flex;gap:7px;min-height:82px;overflow-x:auto;padding:1px 0 4px}
+  .blackjack-card{display:flex;flex:0 0 56px;flex-direction:column;justify-content:space-between;width:56px;height:80px;padding:7px;border:1px solid #dbe5dc;border-radius:7px;background:#fff;color:#14231d;font-size:18px;font-weight:800;box-shadow:0 2px 5px #0002}
+  .blackjack-card span:last-child{align-self:flex-end;font-size:16px}
+  .blackjack-card.is-red{color:#d54f48}
+  .blackjack-card.is-hidden{border-color:#91ab96;background:repeating-linear-gradient(45deg,#1d4a3a 0 6px,#2a624b 6px 12px);box-shadow:inset 0 0 0 3px #ffffff35}
+  .blackjack-versus{height:0;overflow:visible;text-align:center;color:#c9f36c;font-size:10px;font-weight:800;transform:translateY(-50%)}
+  .blackjack-status{margin:0;padding:10px 12px;border-radius:7px;background:#ffffff12;color:#eff7f0;font-size:12px;line-height:1.45}
+  .blackjack-status.won{background:#c9f36c;color:#102d25}
+  .blackjack-status.lost{background:#f07c6524;color:#ffd3c9}
+  .blackjack-status.push{background:#e8bd5824;color:#ffe9a8}
+  .blackjack-actions{display:flex;gap:8px}
+  .blackjack-actions button{flex:1;min-height:44px}
+  .bottom button{min-height:46px}
+  button:disabled{cursor:wait;opacity:.6}
+  @media(max-width:600px){
+    .app{padding-bottom:76px}
+    .top{padding:12px 15px}
+    .hero{padding:18px 16px 20px}
+    .hero:after{right:-225px;bottom:-235px;width:300px;height:300px;opacity:.12}
+    .hero h1{font-size:28px}
+    .content{padding:0 14px}
+    .games{gap:9px}
+    .game .art{height:66px;font-size:30px}
+    .game h3{margin:10px 10px 4px;font-size:14px}
+    .game p{margin:0 10px 9px;font-size:10px}
+    .game .play{margin:0 8px 8px;width:calc(100% - 16px);min-height:36px;padding:0 5px;font-size:10px}
+    .panel{padding:15px}
+    .room-join-controls{grid-template-columns:minmax(0,1fr) auto}
+    .room-join button{padding:0 10px;font-size:11px}
+    .blackjack-game{padding:10px}
+    .blackjack-hand{padding:10px}
+  }
+</style>
+<style>
+  .poker-players{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;margin:12px 0}
+  .poker-player{position:relative;display:grid;gap:4px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#f7faf6;font-size:11px}
+  .poker-player.is-turn{border-color:var(--green2);box-shadow:0 0 0 2px #1d4a3a20}
+  .poker-player small{color:#557866;font-weight:800}
+  .poker-cards{display:flex;gap:4px;min-height:27px}
+  .poker-card{display:grid;place-items:center;min-width:30px;height:38px;padding:0 4px;border-radius:4px;background:#fff;box-shadow:0 2px 5px #183b2d16;font-size:13px;font-weight:800}
+  .poker-card.is-red{color:#d35245}
+  .poker-card.is-hidden{background:#dce8df;color:#547266}
+  .poker-board{display:grid;justify-items:center;gap:8px;margin:12px 0;padding:13px;border-radius:9px;background:#e6f0e3}
+  .poker-board .poker-cards{justify-content:center;flex-wrap:wrap}
+  .poker-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+  #poker-raise-to{width:100px;padding:7px;border:1px solid var(--line);border-radius:6px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div class="brand"><span class="mark">s</span><span>soto</span></div><div class="coinbar"><span class="coin">S</span><b id="balance">2,480</b> play coins</div></header>
+  <section class="hero"><p class="eyebrow">Telegram game room</p><h1 id="greeting">Good evening, player</h1><p>Play friendly games with your Telegram friends. Your table is open.</p><div class="actions"><button class="primary" data-game="poker">Create a poker table</button><button class="secondary" data-invite>Invite friends</button></div></section>
+  <main class="content">
+    <div class="section-head"><h2>Find your game</h2><button data-toast="More games are coming soon.">See all →</button></div>
+    <section class="games"><article class="game"><div class="art">🂡</div><h3>Blackjack</h3><p>Beat the dealer · 2 min</p><button class="play" data-game="blackjack">Play a hand →</button></article><article class="game"><div class="art">🪙</div><h3>Coin flip</h3><p>Call it with a friend</p><button class="play" data-game="coin">Flip a coin →</button></article><article class="game"><div class="art">🎰</div><h3>Lucky slots</h3><p>One spin, three reels</p><button class="play" data-game="slots">Take a spin →</button></article><article class="game"><div class="art">🃏</div><h3>Poker room</h3><p>Bring your crew · 2–8</p><button class="play" data-game="poker">Open a table →</button></article></section>
+    <div class="section-head"><h2>Your circle</h2><button data-toast="Activity view is coming soon.">See activity →</button></div>
+    <section class="columns"><div class="panel"><h3>Friends online · 3 ready to play</h3><div class="row"><span class="avatar">JL</span><div class="person"><strong>Jamie Lee</strong><span>On a 4-game streak</span></div><button class="small" data-profile="Jamie Lee">View</button></div><div class="row"><span class="avatar">PS</span><div class="person"><strong>Priya Shah</strong><span>Just finished blackjack</span></div><button class="small" data-profile="Priya Shah">View</button></div><div class="row"><span class="avatar">SR</span><div class="person"><strong>Sam Rivera</strong><span>At the slots</span></div><button class="small" data-profile="Sam Rivera">View</button></div></div><div class="panel"><h3>While you were away</h3><div class="feed"><div>♠ <b>Jamie</b> sent you a poker invite · 12m</div><div>✦ <b>Priya</b> reached a 4-game streak · 1h</div><div>＋ <b>Sam</b> joined Soto · 3h</div></div><div class="room"><small>Friends room</small><h3>Friday night poker crew</h3><p>4 players · starts in 20 min</p><button data-game="poker">Join the table →</button></div></div></section>
+    <p class="disclaimer">Soto uses virtual play coins only. No deposits, cash prizes, or payouts.</p>
+  </main>
+  <nav class="bottom"><button class="active" data-toast="You are already on the home screen."><span>⌂</span>Home</button><button data-toast="Games view is ready."><span>♧</span>Games</button><button data-game="poker"><span>＋</span>Play</button><button data-toast="Friends view is ready."><span>♙</span>Friends</button><button data-profile="Your profile"><span>◎</span>Profile</button></nav>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal" id="modal"><section class="sheet" role="dialog" aria-modal="true"><div class="sheet-head"><h2 id="modal-title">Soto</h2><button class="close" aria-label="Close">×</button></div><div id="modal-body"></div></section></div>
+<script>
+const tg=window.Telegram?.WebApp; if(tg){tg.ready();tg.expand();document.documentElement.style.setProperty('--tg-bg',tg.themeParams?.bg_color||'#f3f6f2')}
+const telegramUser=tg?.initDataUnsafe?.user; if(telegramUser){document.querySelector('#greeting').textContent=`Good evening, ${telegramUser.first_name}`}
+let balance=Number(localStorage.getItem('soto-balance')||2480), bet=50, flipChoice='Heads', toastTimer;const modal=document.querySelector('#modal'),body=document.querySelector('#modal-body');document.querySelector('#balance').textContent=balance.toLocaleString();
+function toast(text){const el=document.querySelector('#toast');el.textContent=text;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
+function open(title,html){document.querySelector('#modal-title').textContent=title;body.innerHTML=html;modal.classList.add('open')}
+function money(){balance=Math.max(0,balance);document.querySelector('#balance').textContent=balance.toLocaleString();localStorage.setItem('soto-balance',balance)}
+function betting(){return `<p class="betline">Play coins: <button class="small" data-bet="-25">−</button> <b id="bet">${bet}</b> <button class="small" data-bet="25">＋</button></p>`}
+function game(type){if(type==='poker'){open('Create a poker table',`<p>Create a private table, invite friends, then deal once at least two players have joined.</p><div class="stats"><div class="stat"><b>Texas</b><span>Hold'em</span></div><div class="stat"><b>2–8</b><span>players</span></div><div class="stat"><b>500</b><span>free table chips</span></div></div><div class="sheet-actions"><button class="primary" id="create">Create and invite</button></div>`);return}if(type==='slots'){open('Lucky slots',`<p>Match two symbols to win 2×. Three matching symbols win 5×. Just for fun.</p>${betting()}<div class="stage"><span class="reel" id="r1">🍒</span><span class="reel" id="r2">⭐</span><span class="reel" id="r3">🍀</span></div><p id="result" style="text-align:center;font-size:11px">Ready when you are.</p><div class="sheet-actions"><button class="primary" id="spin">Spin · ${bet} coins</button></div>`);return}if(type==='coin'){open('Coin flip',`<p>Pick a side. Correct calls earn 2× your play coins back.</p><div class="sheet-actions"><button class="small selected" data-choice="Heads">Heads</button><button class="small" data-choice="Tails">Tails</button></div>${betting()}<div class="stage"><span class="flip" id="flip">S</span></div><p id="result" style="text-align:center;font-size:11px">Call it.</p><div class="sheet-actions"><button class="primary" id="flip-btn">Flip · ${bet} coins</button></div>`);return}open('Blackjack',`<p>Get closer to 21 than the dealer without going over. Win 2× your play coins.</p>${betting()}<div class="stage"><span class="reel">🂠</span><span class="reel">🂠</span><span style="font-size:22px">vs</span><span class="reel">🂠</span></div><p id="result" style="text-align:center;font-size:11px">A full blackjack table is ready for multiplayer play.</p><div class="sheet-actions"><button class="primary" id="deal">Deal a hand · ${bet} coins</button></div>`)}
+function profile(name){open('Player profile',`<div class="profile"><span class="avatar">${name.split(' ').map(x=>x[0]).join('')}</span><div><h2 style="margin:0 0 3px;font-size:16px">${name}</h2><p style="margin:0">@${name.toLowerCase().replace(' ','_')} · Soto player</p></div></div><div class="stats"><div class="stat"><b>32</b><span>games played</span></div><div class="stat"><b>5 days</b><span>best streak</span></div><div class="stat"><b>Poker</b><span>favorite</span></div></div><p>“Good cards, better company. Ready for a game.”</p><div class="sheet-actions"><button class="primary" id="invite-user">Invite to play</button></div>`)}
+function invite(){open('Invite friends',`<p>Share Soto with your Telegram friends and meet in a private game room.</p><div style="padding:11px;border:1px solid var(--line);border-radius:7px;background:#f7faf6;font-size:11px;color:var(--muted)">Open Soto from your Telegram chat, then choose a game and invite your friends.</div><div class="sheet-actions" style="margin-top:15px"><button class="primary" id="share">Share invite</button></div>`)}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-game]');if(g){game(g.dataset.game);return}const p=e.target.closest('[data-profile]');if(p){profile(p.dataset.profile);return}if(e.target.closest('[data-invite]')){invite();return}if(e.target.closest('[data-toast]')){toast(e.target.closest('[data-toast]').dataset.toast);return}const b=e.target.closest('[data-bet]');if(b){bet=Math.max(25,Math.min(500,bet+Number(b.dataset.bet)));const n=document.querySelector('#bet');if(n)n.textContent=bet;['#spin','#flip-btn','#deal'].forEach(s=>{const x=document.querySelector(s);if(x)x.textContent=`${s==='#spin'?'Spin':s==='#deal'?'Deal a hand':'Flip'} · ${bet} coins`});return}const c=e.target.closest('[data-choice]');if(c){flipChoice=c.dataset.choice;document.querySelectorAll('[data-choice]').forEach(x=>x.classList.toggle('selected',x===c));return}if(e.target.closest('#spin')){if(balance<bet){toast('Not enough play coins.');return}balance-=bet;const a=['🍒','⭐','🍀','🔔','💎'],r=[0,1,2].map(()=>a[Math.floor(Math.random()*a.length)]);r.forEach((x,i)=>document.querySelector('#r'+(i+1)).textContent=x);const count=r.filter(x=>x===r[0]).length;const max=Math.max(count,...a.map(x=>r.filter(y=>y===x).length));if(max===3){balance+=bet*5;document.querySelector('#result').textContent=`Jackpot! ${bet*5} play coins back.`}else if(max===2){balance+=bet*2;document.querySelector('#result').textContent=`A pair! ${bet*2} play coins back.`}else document.querySelector('#result').textContent='No match this time.';money();return}if(e.target.closest('#flip-btn')){if(balance<bet){toast('Not enough play coins.');return}balance-=bet;const result=Math.random()<.5?'Heads':'Tails',coin=document.querySelector('#flip');coin.textContent=result[0];coin.classList.remove('spin');void coin.offsetWidth;coin.classList.add('spin');if(result===flipChoice){balance+=bet*2;document.querySelector('#result').textContent=`${result}! You win ${bet*2} play coins.`}else document.querySelector('#result').textContent=`${result}. Your call was ${flipChoice}.`;money();return}if(e.target.closest('#deal')){if(balance<bet){toast('Not enough play coins.');return}balance-=bet;money();document.querySelector('#result').textContent='Hand dealt. Multiplayer table coming next.';return}if(e.target.closest('#create')){modal.classList.remove('open');toast('Private table created. Share it with your friends.');return}if(e.target.closest('#invite-user')){modal.classList.remove('open');toast('Invite ready to send.');return}if(e.target.closest('#share')){if(tg?.switchInlineQuery){tg.switchInlineQuery('Join me in a Soto game room!','users')}else toast('Open Soto from Telegram to share an invite.');return}});document.querySelector('.close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+</script>
+<script>
+  if (window.Telegram?.WebApp?.switchInlineQuery) {
+    const version = Number.parseFloat(window.Telegram.WebApp.version || '0');
+    const telegramShare = window.Telegram.WebApp.switchInlineQuery.bind(window.Telegram.WebApp);
+    window.Telegram.WebApp.switchInlineQuery = (...args) => {
+      if (version < 6.1) { toast('Use the Telegram menu to share your Soto invite.'); return; }
+      try { telegramShare(...args); } catch { toast('Use the Telegram menu to share your Soto invite.'); }
+    };
+  }
+</script>
+<script src="/app.js"></script>
+</body>
+</html>
